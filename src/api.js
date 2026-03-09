@@ -2,7 +2,10 @@ import axios from "axios";
 
 // Updated Base URL Configuration
 const BASE_URL =
-  import.meta.env.VITE_API_URL || "http://13.232.157.160:8000/api/v1";
+  import.meta.env.VITE_API_URL ||
+  (import.meta.env.MODE === "development"
+    ? "http://localhost:8000/api/v1"
+    : "http://your-ec2-public-ip:8000/api/v1"); // Replace with your actual EC2 Public IP
 
 const api = axios.create({
   baseURL: BASE_URL,
